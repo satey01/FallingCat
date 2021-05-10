@@ -26,7 +26,7 @@ public class OnTrigger : MonoBehaviour
                 break;
 
             case "Balloon":
-                _triggerType.Balloon();
+                _triggerType.Balloon(m_level);
                 break;
 
             case "Invulnerability":
@@ -34,7 +34,7 @@ public class OnTrigger : MonoBehaviour
                 break;
 
             case "Freezed":
-                _triggerType.Freezed();
+                _triggerType.Freezed(m_player);
                 break;
 
             default:

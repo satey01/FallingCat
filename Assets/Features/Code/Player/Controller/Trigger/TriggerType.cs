@@ -4,31 +4,54 @@ using UnityEngine;
 
 public class TriggerType : MonoBehaviour
 {
-    [Header("Time before the speed came back to normal")]
+    #region Exposed Members
+
+    [Header("Time before the speed come back to normal")]
     public float m_timeBeforeSlowDown;
 
-    private float _timeOfNextBullet;
+    [Header("Speed up value")]
+    public float m_speedUpValue;
 
-    private float _previousSpeed;
+    [Header("Speed down value")]
+    public float m_speedDownValue;
+
+    private PlayerData _player;
+
+    #endregion Exposed Members
+
+    #region Unity API
 
     public void Start()
     {
-        _timeOfNextBullet = Time.time;
-    }
+        _timeOfResumeSpeed = Time.time;
+        _transform = GetComponent<Transform>();
 
-    private void IncrementTimer()
-    {
-        _timeOfNextBullet = Time.time + m_timeBeforeSlowDown;
+        _player = GetComponent<PlayerCtrl>().player;
     }
 
     private void FixedUpdate()
     {
-        if (!(Time.time > _timeOfNextBullet)) return;
+        if ((Time.time > _timeOfResumeSpeed))
+        {
+            Debug.Log($"speed back to normal");
 
-        IncrementTimer();
+            GetComponent<OnTrigger>().m_level.currentScrollingSpeed = GetComponent<OnTrigger>().m_level.startingScrollingSpeed;
+
+            IncrementTimer();
+        }
     }
 
+    #endregion Unity API
+
     #region Tools
+
+    private void IncrementTimer()
+    {
+        _timeOfResumeSpeed = Time.time + m_timeBeforeSlowDown;
+        _player._isFreeze = false;
+    }
+
+    #region States
 
     public void dynamite(PlayerData _player, string _tagName)
     {
@@ -40,12 +63,14 @@ public class TriggerType : MonoBehaviour
     {
         Debug.Log($"WaterTear  : i speed up");
 
-        _level.scrollingSpeed = 50.0f;
+        _level.currentScrollingSpeed = m_speedUpValue;
     }
 
-    public void Balloon()
+    public void Balloon(TheLevelData _level)
     {
         Debug.Log($"Balloon : i slow down");
+
+        _level.currentScrollingSpeed = m_speedDownValue;
     }
 
     public void Invulnerability()
@@ -53,10 +78,22 @@ public class TriggerType : MonoBehaviour
         Debug.Log($"Invulnerability : i took a bread");
     }
 
-    public void Freezed()
+    public void Freezed(PlayerData _player)
     {
-        Debug.Log($"Freezed : i took weed");
+        Debug.Log($"Freezed : i took a pill in ibiza");
+        _transform.position = _transform.position;
+
+        _player._isFreeze = true;
     }
 
+    #endregion States
+
     #endregion Tools
+
+    #region Private and Protected Members
+
+    private Transform _transform;
+    private float _timeOfResumeSpeed;
+
+    #endregion Private and Protected Members
 }

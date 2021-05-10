@@ -9,4 +9,6 @@ public class PlayerData : ScriptableObject
     public float score;
 
     public int dynamiteCounter;
+
+    public bool _isFreeze;
 }

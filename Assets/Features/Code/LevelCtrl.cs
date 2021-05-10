@@ -14,14 +14,14 @@ public class LevelCtrl : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        _rb.AddForce(Vector3.up * m_Level.scrollingSpeed);
+        _rb.AddForce(Vector3.up * m_Level.currentScrollingSpeed);
     }
 
     private void FixedUpdate()
     {
-        if (_rb.velocity.magnitude > m_Level.scrollingSpeed)
+        if (_rb.velocity.magnitude > m_Level.currentScrollingSpeed)
         {
-            _rb.velocity = _rb.velocity.normalized * m_Level.scrollingSpeed;
+            _rb.velocity = _rb.velocity.normalized * m_Level.currentScrollingSpeed;
         }
     }
 

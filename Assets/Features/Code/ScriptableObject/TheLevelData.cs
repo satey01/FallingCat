@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TheLevelData", menuName = "ScriptableObjects/Level")]
 public class TheLevelData : ScriptableObject
 {
-    public float scrollingSpeed;
+    public float startingScrollingSpeed;
+    public float currentScrollingSpeed;
 }

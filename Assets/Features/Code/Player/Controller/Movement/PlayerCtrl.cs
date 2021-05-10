@@ -14,7 +14,7 @@ public class PlayerCtrl : MonoBehaviour
     [Tooltip("Set the Component Here")]
     private Transform _transform;
 
-    private Rigidbody _rb;
+    public PlayerData player;
 
     #endregion Exposed Members
 
@@ -27,6 +27,7 @@ public class PlayerCtrl : MonoBehaviour
 
         //_horizontalSpeed = 2f;
         _moveRight = true;
+        player._isFreeze = false;
     }
 
     private void Update()
@@ -49,13 +50,29 @@ public class PlayerCtrl : MonoBehaviour
             _moveRight = true;
         }
 
-        if (_moveRight)
+        //if (Input.GetKeyDown(KeyCode.N) && _isFreeze == false)
+        //{
+        //    _isFreeze = true;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.N) && _isFreeze == true)
+        //{
+        //    _isFreeze = false;
+        //}
+
+        if (player._isFreeze == false)
         {
-            _transform.position = new Vector2(_transform.position.x + _horizontalSpeed * Time.deltaTime, _transform.position.y);
+            if (_moveRight)
+            {
+                _transform.position = new Vector2(_transform.position.x + _horizontalSpeed * Time.deltaTime, _transform.position.y);
+            }
+            else if (_moveRight == false)
+            {
+                _transform.position = new Vector2(_transform.position.x - _horizontalSpeed * Time.deltaTime, _transform.position.y);
+            }
         }
-        else
+        else if (player._isFreeze == true)
         {
-            _transform.position = new Vector2(_transform.position.x - _horizontalSpeed * Time.deltaTime, _transform.position.y);
+            _transform.position = _transform.position;
         }
     }
 
@@ -65,6 +82,8 @@ public class PlayerCtrl : MonoBehaviour
 
     // mechanic variable
     private bool _moveRight = true;
+
+    private Rigidbody _rb;
 
     #endregion Private and Protected
 }

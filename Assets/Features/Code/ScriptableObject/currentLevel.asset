@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6cd6476642f684a8e02b5ed2d58826, type: 3}
   m_Name: currentLevel
   m_EditorClassIdentifier: 
-  scrollingSpeed: 50
+  startingScrollingSpeed: 7
+  currentScrollingSpeed: 7
