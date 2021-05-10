@@ -20,5 +20,13 @@ public class LevelCtrl : MonoBehaviour
         _rb.AddForce(Vector3.up * _scrollingSpeed);
     }
 
+    private void FixedUpdate()
+    {
+        if (_rb.velocity.magnitude > _scrollingSpeed)
+        {
+            _rb.velocity = _rb.velocity.normalized * _scrollingSpeed;
+        }
+    }
+
     private Rigidbody _rb;
 }

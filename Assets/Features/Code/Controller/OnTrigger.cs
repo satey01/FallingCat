@@ -6,13 +6,18 @@ public class OnTrigger : MonoBehaviour
 {
     private Rigidbody _rb;
 
+    private void Start()
+    {
+        _rb.GetComponent<Rigidbody>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Parachute"))
+        if (other.gameObject.CompareTag("Collectible"))
         {
-            Debug.Log($"parachute");
+            Debug.Log($"Collectible");
 
-            _rb.velocity = new Vector3(0, 10, 0);
+            _rb.velocity = new Vector3(0, 0, 0);
         }
 
         if (other.gameObject.CompareTag("Background"))

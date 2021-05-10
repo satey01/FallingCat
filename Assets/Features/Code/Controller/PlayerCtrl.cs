@@ -29,8 +29,16 @@ public class PlayerCtrl : MonoBehaviour
         _moveRight = true;
     }
 
-    // Update is called once per frame
     private void Update()
+    {
+        Movement();
+    }
+
+    #endregion Unity API
+
+    #region Tools
+
+    private void Movement()
     {
         if (Input.GetKeyDown(KeyCode.Space) && _moveRight == true)
         {
@@ -49,9 +57,14 @@ public class PlayerCtrl : MonoBehaviour
         {
             _transform.position = new Vector2(_transform.position.x - _horizontalSpeed * Time.deltaTime, _transform.position.y);
         }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            _rb.velocity = Vector3.zero;
+        }
     }
 
-    #endregion Unity API
+    #endregion Tools
 
     #region Private and Protected
 
