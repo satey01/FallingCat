@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class YourTimer : MonoBehaviour
 {
-    private float timer = 0.0f;
+    #region Unity API
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
     private void Update()
     {
         timer += Time.deltaTime;
         Debug.Log($"{timer}");
     }
+
+    #endregion Unity API
+
+    #region Private and Protected
+
+    private float timer = 0.0f;
+
+    #endregion Private and Protected
 }

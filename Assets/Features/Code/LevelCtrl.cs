@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class LevelCtrl : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("Scrolling speed here")]
-    private float _scrollingSpeed;
+    public TheLevelData m_Level;
 
-    // Start is called before the first frame update
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -17,14 +14,14 @@ public class LevelCtrl : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        _rb.AddForce(Vector3.up * _scrollingSpeed);
+        _rb.AddForce(Vector3.up * m_Level.scrollingSpeed);
     }
 
     private void FixedUpdate()
     {
-        if (_rb.velocity.magnitude > _scrollingSpeed)
+        if (_rb.velocity.magnitude > m_Level.scrollingSpeed)
         {
-            _rb.velocity = _rb.velocity.normalized * _scrollingSpeed;
+            _rb.velocity = _rb.velocity.normalized * m_Level.scrollingSpeed;
         }
     }
 

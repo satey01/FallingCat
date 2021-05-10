@@ -6,7 +6,9 @@ TagManager:
   tags:
   - Dynamite
   - WaterTear
-  - Baudruche
+  - Balloon
+  - Invulnerability
+  - Freezed
   layers:
   - Default
   - TransparentFX

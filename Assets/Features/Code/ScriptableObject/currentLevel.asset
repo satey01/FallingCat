@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23ad043fa90faa439fa9deabd895852, type: 3}
-  m_Name: currentPlayer
+  m_Script: {fileID: 11500000, guid: da6cd6476642f684a8e02b5ed2d58826, type: 3}
+  m_Name: currentLevel
   m_EditorClassIdentifier: 
-  playerName: 
-  score: 0
-  dynamiteCounter: 1
+  scrollingSpeed: 50

@@ -7,7 +7,7 @@ public class PlayerCtrl : MonoBehaviour
     #region Exposed Members
 
     [SerializeField]
-    [Tooltip("Set the speed Here")]
+    [Tooltip("Set the Horizontal speed Here")]
     private float _horizontalSpeed;
 
     // component
@@ -56,11 +56,6 @@ public class PlayerCtrl : MonoBehaviour
         else
         {
             _transform.position = new Vector2(_transform.position.x - _horizontalSpeed * Time.deltaTime, _transform.position.y);
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            _rb.velocity = Vector3.zero;
         }
     }
 
