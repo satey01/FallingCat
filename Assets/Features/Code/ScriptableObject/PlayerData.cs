@@ -7,4 +7,6 @@ public class PlayerData : ScriptableObject
 {
     public string playerName;
     public float score;
+
+    public int dynamiteCounter;
 }

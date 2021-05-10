@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class OnTrigger : MonoBehaviour
 {
+    public PlayerData player;
+
     private void Start()
     {
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Collectible"))
+        string _tagName = other.gameObject.tag;
+
+        switch (_tagName)
         {
-            Debug.Log($"Collectible");
+            case "Dynamite":
+                Debug.Log($"i hited a {_tagName}");
+                player.dynamiteCounter += 1;
+                break;
+
+            case "WaterTear":
+                Debug.Log($"WaterTear");
+                break;
+
+            default:
+                break;
         }
+
+        // Baudruche
+
+        //if (other.gameObject.CompareTag(_tagName))
+        //{
+        //    Debug.Log($"{other.gameObject.tag}");
+        //}
     }
 }
