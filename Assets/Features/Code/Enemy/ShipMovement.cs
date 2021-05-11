@@ -9,7 +9,6 @@ public class ShipMovement : MonoBehaviour
     public float moveSpeed;
     public float m_limitLeft;
     public float m_limitRight;
-    private bool moveRight;
 
     #endregion Privates and Protected
 
@@ -21,15 +20,18 @@ public class ShipMovement : MonoBehaviour
         moveRight = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (transform.position.x > m_limitRight)
+
         {
             moveRight = false;
+            transform.Rotate(0, 180, 0, Space.Self);
         }
         else if (transform.position.x < m_limitLeft)
         {
             moveRight = true;
+            transform.Rotate(0, 180, 0, Space.Self);
         }
 
         if (moveRight)
@@ -43,4 +45,10 @@ public class ShipMovement : MonoBehaviour
     }
 
     #endregion Unity API
+
+    #region Private and Protected
+
+    private bool moveRight;
+
+    #endregion Private and Protected
 }
