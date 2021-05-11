@@ -41,6 +41,11 @@ public class OnTrigger : MonoBehaviour
                 _triggerType.Background(_tagName);
                 break;
 
+            case "FlyingMouse2right":
+
+                _triggerType.FlyingMouse2right(other.gameObject.transform);
+                break;
+
             default:
                 break;
         }
