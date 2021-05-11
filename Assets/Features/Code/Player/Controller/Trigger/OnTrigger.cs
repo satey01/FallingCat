@@ -37,6 +37,10 @@ public class OnTrigger : MonoBehaviour
                 _triggerType.Freezed(m_player);
                 break;
 
+            case "Background":
+                _triggerType.Background(_tagName);
+                break;
+
             default:
                 break;
         }

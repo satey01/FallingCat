@@ -9,6 +9,7 @@ TagManager:
   - Balloon
   - Invulnerability
   - Freezed
+  - Background
   layers:
   - Default
   - TransparentFX
