@@ -15,6 +15,9 @@ public class TriggerType : MonoBehaviour
     [Header("Speed down value")]
     public float m_speedDownValue;
 
+    [Header("Flying mouse speed")]
+    public float m_flyingSpeed;
+
     #endregion Exposed Members
 
     #region Unity API
@@ -93,6 +96,11 @@ public class TriggerType : MonoBehaviour
             Debug.Log($"outch that hurt it was a {_tagName}");
             _player.dynamiteCounter -= 1;
         }
+    }
+
+    public void FlyingMouse2right(Transform other)
+    {
+        Debug.Log($"i'm heree");
     }
 
     #endregion States

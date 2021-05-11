@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 
   score: 0
-  dynamiteCounter: 0
-  _isFreeze: 1
+  dynamiteCounter: 5
+  _isFreeze: 0
   _isInvuln: 0

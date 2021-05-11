@@ -10,6 +10,8 @@ TagManager:
   - Invulnerability
   - Freezed
   - Background
+  - FlyingMouse2left
+  - FlyingMouse2right
   layers:
   - Default
   - TransparentFX
