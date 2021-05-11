@@ -15,8 +15,6 @@ public class TriggerType : MonoBehaviour
     [Header("Speed down value")]
     public float m_speedDownValue;
 
-    private PlayerData _player;
-
     #endregion Exposed Members
 
     #region Unity API
@@ -49,6 +47,7 @@ public class TriggerType : MonoBehaviour
     {
         _timeOfResumeSpeed = Time.time + m_timeBeforeSlowDown;
         _player._isFreeze = false;
+        _player._isInvuln = false;
     }
 
     #region States
@@ -76,6 +75,7 @@ public class TriggerType : MonoBehaviour
     public void Invulnerability()
     {
         Debug.Log($"Invulnerability : i took a bread");
+        _player._isInvuln = true;
     }
 
     public void Freezed(PlayerData _player)
@@ -86,6 +86,15 @@ public class TriggerType : MonoBehaviour
         _player._isFreeze = true;
     }
 
+    public void Background(string _tagName)
+    {
+        if (_player._isInvuln == false)
+        {
+            Debug.Log($"outch that hurt it was a {_tagName}");
+            _player.dynamiteCounter -= 1;
+        }
+    }
+
     #endregion States
 
     #endregion Tools
@@ -94,6 +103,7 @@ public class TriggerType : MonoBehaviour
 
     private Transform _transform;
     private float _timeOfResumeSpeed;
+    private PlayerData _player;
 
     #endregion Private and Protected Members
 }

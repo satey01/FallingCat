@@ -11,4 +11,6 @@ public class PlayerData : ScriptableObject
     public int dynamiteCounter;
 
     public bool _isFreeze;
+
+    public bool _isInvuln;
 }
