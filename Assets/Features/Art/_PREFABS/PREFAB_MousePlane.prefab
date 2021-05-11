@@ -105,6 +105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MESH_HM_Mouse_Plane
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 494d04c7e5514a04797c645de7db0289, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494d04c7e5514a04797c645de7db0289, type: 3}
 --- !u!1 &2685755311305541299 stripped
