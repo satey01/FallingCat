@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/KevPrototype/MainMenuScene.unity
+    guid: 8ed9b2299717b1a43bc8c5b9211fe2a7
+  - enabled: 1
+    path: Assets/Scenes/KevPrototype/CodeProto 1.unity
+    guid: 930680b59f6d4944a8bc0b4b976bdca4
   m_configObjects: {}

@@ -7,4 +7,8 @@ public class TheLevelData : ScriptableObject
 {
     public float startingScrollingSpeed;
     public float currentScrollingSpeed;
+
+    public int maxDynamiteInLevel;
+
+    public bool justWon;
 }
