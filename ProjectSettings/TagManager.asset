@@ -10,10 +10,9 @@ TagManager:
   - Invulnerability
   - Freezed
   - Background
-  - FlyingMouse2left
-  - FlyingMouse2right
   - Collectible
   - EuroDisney
+  - FlyingMouse
   layers:
   - Default
   - TransparentFX

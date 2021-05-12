@@ -11,6 +11,7 @@ public class OnTrigger : MonoBehaviour
     private void Start()
     {
         _triggerType = GetComponent<TriggerType>();
+        _triggerMusic = GetComponent<OnMusicTrigger>();
 
         cam.GetComponent<Camera>().enabled = false;
     }
@@ -22,41 +23,66 @@ public class OnTrigger : MonoBehaviour
         switch (_tagName)
         {
             case "Dynamite":
-                _triggerType.dynamite(m_player, _tagName);
+                _triggerType.Dynamite(m_player, _tagName);
+                _triggerMusic.PlayThatClipBonus(true);
+
                 break;
 
             case "WaterTear":
                 _triggerType.WaterTear(m_level);
+                _triggerMusic.PlayThatClipBonus(false);
+
                 break;
 
             case "Balloon":
                 _triggerType.Balloon(m_level);
-                break;
+                _triggerMusic.PlayThatClipBonus(true);
 
-            case "Invulnerability":
-                _triggerType.Invulnerability();
-                break;
-
-            case "Freezed":
-                _triggerType.Freezed(m_player);
                 break;
 
             case "Background":
                 _triggerType.Background(_tagName);
+                if (m_player._isInvuln == false)
+                {
+                    _triggerMusic.PlayThatClipBonus(false);
+                }
+
+                break;
+
+            case "Invulnerability":
+                _triggerType.Invulnerability();
+                _triggerMusic.PlayThatClipBonus(true);
                 break;
 
             case "FlyingMouse":
-
                 _triggerType.Background(_tagName);
+                _triggerMusic.PlayThatClipBonus(false);
+
+                break;
+
+            case "Freezed":
+                _triggerType.Freezed(m_player);
+                _triggerMusic.PlayThatClipBonus(false);
                 break;
 
             case "EuroDisney":
                 _triggerType.EuroDisney(m_level);
                 cam.GetComponent<Camera>().enabled = true;
+
+                _triggerMusic.PlayBoom();
                 break;
 
             default:
                 break;
+        }
+        // lol logic ? !
+        if (!other.CompareTag("Background") && !other.CompareTag("EuroDisney"))
+        {
+            Destroy(other.gameObject);
+        }
+        else if (m_player._isInvuln == true)
+        {
+            Destroy(other.gameObject);
         }
     }
 
@@ -77,6 +103,7 @@ public class OnTrigger : MonoBehaviour
 
     private string _tagName;
     private TriggerType _triggerType;
+    private OnMusicTrigger _triggerMusic;
 
     #endregion Private & Protected
 }
