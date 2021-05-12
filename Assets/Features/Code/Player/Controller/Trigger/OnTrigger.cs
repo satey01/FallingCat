@@ -6,6 +6,8 @@ public class OnTrigger : MonoBehaviour
 {
     public Camera cam;
 
+    public GameObject m_toShowEndGame;
+
     #region Unity API
 
     private void Start()
@@ -14,6 +16,8 @@ public class OnTrigger : MonoBehaviour
         _triggerMusic = GetComponent<OnMusicTrigger>();
 
         cam.GetComponent<Camera>().enabled = false;
+
+        m_toShowEndGame.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -70,6 +74,9 @@ public class OnTrigger : MonoBehaviour
                 cam.GetComponent<Camera>().enabled = true;
 
                 _triggerMusic.PlayBoom();
+
+                m_toShowEndGame.SetActive(true);
+
                 break;
 
             default:

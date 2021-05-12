@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelCtrl : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class LevelCtrl : MonoBehaviour
 
     private void Start()
     {
+        m_Level.currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         _rb = GetComponent<Rigidbody>();
         m_Level.justWon = false;
     }

@@ -13,6 +13,8 @@ public class UserInterfaceMngr : MonoBehaviour
     public TheLevelData m_level;
     public Text m_maxDynamite;
 
+    public GameObject m_showWhenLoose;
+
     #endregion Exposed Members
 
     #region Unity API
@@ -22,12 +24,19 @@ public class UserInterfaceMngr : MonoBehaviour
         m_player.dynamiteCounter = m_level.maxDynamiteInLevel;
 
         m_maxDynamite.text = m_level.maxDynamiteInLevel.ToString();
+
+        m_showWhenLoose.SetActive(false);
     }
 
     // Update is called once per frame
     private void Update()
     {
         m_currentDynamite.text = m_player.dynamiteCounter.ToString();
+
+        if (m_player.dynamiteCounter <= 0)
+        {
+            m_showWhenLoose.SetActive(true);
+        }
     }
 
     #endregion Unity API

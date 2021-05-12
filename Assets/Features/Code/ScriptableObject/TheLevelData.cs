@@ -11,4 +11,6 @@ public class TheLevelData : ScriptableObject
     public int maxDynamiteInLevel;
 
     public bool justWon;
+
+    public int currentSceneIndex;
 }
