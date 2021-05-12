@@ -9,19 +9,23 @@ public class LevelCtrl : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        _rb.AddForce(Vector3.up * m_Level.currentScrollingSpeed);
+        m_Level.justWon = false;
     }
 
     private void FixedUpdate()
     {
-        if (_rb.velocity.magnitude > m_Level.currentScrollingSpeed)
+        if (!m_Level.justWon)
         {
-            _rb.velocity = _rb.velocity.normalized * m_Level.currentScrollingSpeed;
+            _rb.AddForce(Vector3.up * m_Level.currentScrollingSpeed);
+
+            if (_rb.velocity.magnitude > m_Level.currentScrollingSpeed)
+            {
+                _rb.velocity = _rb.velocity.normalized * m_Level.currentScrollingSpeed;
+            }
+        }
+        else if (m_Level.justWon)
+        {
+            Physics.autoSimulation = false;
         }
     }
 

@@ -18,6 +18,12 @@ public class TriggerType : MonoBehaviour
     [Header("Flying mouse speed")]
     public float m_flyingSpeed;
 
+    [Header("Put the animator controller of kitty here")]
+    public Animator anim;
+
+    [Header("Put the finish line particule system explosion here")]
+    public GameObject particleSys;
+
     #endregion Exposed Members
 
     #region Unity API
@@ -28,17 +34,22 @@ public class TriggerType : MonoBehaviour
         _transform = GetComponent<Transform>();
 
         _player = GetComponent<PlayerCtrl>().player;
+
+        particleSys.GetComponent<ParticleSystemRenderer>().enabled = false;
     }
 
-    private void FixedUpdate()
+    public void FixTimer(TheLevelData _level)
     {
         if ((Time.time > _timeOfResumeSpeed))
         {
             Debug.Log($"speed back to normal");
 
-            GetComponent<OnTrigger>().m_level.currentScrollingSpeed = GetComponent<OnTrigger>().m_level.startingScrollingSpeed;
+            _level.currentScrollingSpeed = _level.startingScrollingSpeed;
 
-            IncrementTimer();
+            if (_level.justWon == false)
+            {
+                IncrementTimer();
+            }
         }
     }
 
@@ -51,6 +62,8 @@ public class TriggerType : MonoBehaviour
         _timeOfResumeSpeed = Time.time + m_timeBeforeSlowDown;
         _player._isFreeze = false;
         _player._isInvuln = false;
+
+        anim.SetBool("toastIsPickedUp", false);
     }
 
     #region States
@@ -78,6 +91,9 @@ public class TriggerType : MonoBehaviour
     public void Invulnerability()
     {
         Debug.Log($"Invulnerability : i took a bread");
+
+        anim.SetBool("toastIsPickedUp", true);
+
         _player._isInvuln = true;
     }
 
@@ -98,9 +114,25 @@ public class TriggerType : MonoBehaviour
         }
     }
 
-    public void FlyingMouse2right(Transform other)
+    public void FlyingMouse()
     {
-        Debug.Log($"i'm heree");
+        Debug.Log($"i've catch mickey mouse");
+    }
+
+    public void EuroDisney(TheLevelData _level)
+    {
+        _player._isInvuln = false;
+        _player._isFreeze = true;
+        _level.justWon = true;
+
+        particleSys.GetComponent<ParticleSystemRenderer>().enabled = true;
+
+        anim.SetBool("toastIsPickedUp", false);
+        m_timeBeforeSlowDown = 0.0f;
+        _timeOfResumeSpeed = 0.0f;
+
+        Debug.Log($"kitty wakbar ^_^ ");
+        anim.SetBool("IsLanding", true);
     }
 
     #endregion States

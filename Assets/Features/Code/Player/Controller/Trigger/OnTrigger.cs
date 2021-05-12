@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class OnTrigger : MonoBehaviour
 {
+    public Camera cam;
+
     #region Unity API
 
     private void Start()
     {
         _triggerType = GetComponent<TriggerType>();
+
+        cam.GetComponent<Camera>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,14 +45,25 @@ public class OnTrigger : MonoBehaviour
                 _triggerType.Background(_tagName);
                 break;
 
-            case "FlyingMouse2right":
+            case "FlyingMouse":
 
-                _triggerType.FlyingMouse2right(other.gameObject.transform);
+                _triggerType.Background(_tagName);
+                break;
+
+            case "EuroDisney":
+                _triggerType.EuroDisney(m_level);
+                cam.GetComponent<Camera>().enabled = true;
                 break;
 
             default:
                 break;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        // win cond
+        _triggerType.FixTimer(m_level);
     }
 
     #endregion Unity API

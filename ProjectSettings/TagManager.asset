@@ -12,6 +12,8 @@ TagManager:
   - Background
   - FlyingMouse2left
   - FlyingMouse2right
+  - Collectible
+  - EuroDisney
   layers:
   - Default
   - TransparentFX
