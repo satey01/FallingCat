@@ -79,7 +79,7 @@ public class TriggerType : MonoBehaviour
 
     #region States
 
-    public void dynamite(PlayerData _player, string _tagName)
+    public void Dynamite(PlayerData _player, string _tagName)
     {
         Debug.Log($"i hited a {_tagName} and i get a new boom boom");
         _player.dynamiteCounter += 1;
