@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/KevPrototype/MainMenuScene.unity
     guid: 8ed9b2299717b1a43bc8c5b9211fe2a7
   - enabled: 1
-    path: Assets/Scenes/KevPrototype/CodeProto 1.unity
-    guid: 930680b59f6d4944a8bc0b4b976bdca4
+    path: Assets/Scenes/Quentin niveau 1 tutoriel.unity
+    guid: 49ce09520df05bc46a8812fcfdab69f2
+  - enabled: 1
+    path: Assets/Scenes/Quentin niveau 2.unity
+    guid: 40c07f7fe2c207e448d65a5b71b877f8
+  - enabled: 1
+    path: Assets/Scenes/Quentin niveau 3.unity
+    guid: e94d9c9281563444a8719b8301f2d649
+  - enabled: 1
+    path: Assets/Scenes/lio level 2.unity
+    guid: fdbcfb78df4b639499dec0e1ae44d1b4
   m_configObjects: {}
