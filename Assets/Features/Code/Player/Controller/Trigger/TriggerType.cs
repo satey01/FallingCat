@@ -21,8 +21,14 @@ public class TriggerType : MonoBehaviour
     [Header("Put the animator controller of kitty here")]
     public Animator anim;
 
-    [Header("Put the finish line particule system explosion here")]
-    public GameObject particleSys;
+    [Header("Put the finish line particule system explosion here (kitty)")]
+    public GameObject particleSysKitty;
+
+    [Header("Put the finish line particule system explosion here (Sherif)")]
+    public GameObject particleSysSherif;
+
+    [Header("Put the particle system of cat here")]
+    public GameObject particuleCat;
 
     #endregion Exposed Members
 
@@ -35,7 +41,10 @@ public class TriggerType : MonoBehaviour
 
         _player = GetComponent<PlayerCtrl>().player;
 
-        particleSys.GetComponent<ParticleSystemRenderer>().enabled = false;
+        particleSysKitty.GetComponent<ParticleSystemRenderer>().enabled = false;
+        particleSysSherif.GetComponent<ParticleSystemRenderer>().enabled = false;
+
+        particuleCat.SetActive(false);
     }
 
     public void FixTimer(TheLevelData _level)
@@ -62,6 +71,8 @@ public class TriggerType : MonoBehaviour
         _timeOfResumeSpeed = Time.time + m_timeBeforeSlowDown;
         _player._isFreeze = false;
         _player._isInvuln = false;
+
+        particuleCat.SetActive(false);
 
         anim.SetBool("toastIsPickedUp", false);
     }
@@ -91,6 +102,8 @@ public class TriggerType : MonoBehaviour
     public void Invulnerability()
     {
         Debug.Log($"Invulnerability : i took a bread");
+
+        particuleCat.SetActive(true);
 
         anim.SetBool("toastIsPickedUp", true);
 
@@ -125,7 +138,8 @@ public class TriggerType : MonoBehaviour
         _player._isFreeze = true;
         _level.justWon = true;
 
-        particleSys.GetComponent<ParticleSystemRenderer>().enabled = true;
+        particleSysKitty.GetComponent<ParticleSystemRenderer>().enabled = true;
+        particleSysSherif.GetComponent<ParticleSystemRenderer>().enabled = true;
 
         anim.SetBool("toastIsPickedUp", false);
         m_timeBeforeSlowDown = 0.0f;
